@@ -5,31 +5,101 @@
 ![Language](https://img.shields.io/badge/Language-Auto--Detect_System_OS-brightgreen.svg)
 ![Architecture](https://img.shields.io/badge/Architecture-64--Bit-orange.svg)
 
-Automated deployment & permanent activation suite for **Microsoft 365** and **Office LTSC 2024** (Includes Excel, Word, and PowerPoint in your OS language).
+Automated deployment & permanent activation suite for **Microsoft 365** and **Office LTSC 2024** (Includes Word, Excel, PowerPoint, and Outlook matching your system OS language).
 
 ---
 
-## ⚡ 1-Click Quick Start
+## 📋 Prerequisites / Voraussetzungen
 
-### Option A: Standard Setup (Recommended)
-1. **Clone or Download the Repository**:
+- **Operating System**: Windows 10 or Windows 11 (64-Bit).
+- **Permissions**: **Administrator privileges** are required to install Office services.
+- **Internet Connection**: Active internet connection to download Office files directly from Microsoft CDN.
+
+---
+
+## ⚡ Quick Start Guide
+
+### Option A: Using Git (Recommended)
+
+1. **Clone the Repository**:
    ```cmd
    git clone https://github.com/moritzpolster14-oss/Office_M365_Setup.git
    cd Office_M365_Setup
    ```
-2. **Run `start.bat`**:
-   Right-click `start.bat` $\rightarrow$ **Run as Administrator**.
-   - Choose `[1]` to Install Microsoft 365.
-   - Choose `[3]` to Activate Office permanently.
+2. **Run the Installer**:
+   - Right-click `start.bat` $\rightarrow$ **Run as Administrator** (*Als Administrator ausführen*).
+   - Press `[1]` to install **Microsoft 365 Apps** or `[2]` for **Office LTSC 2024**.
+   - After installation, press `[3]` to launch the permanent **Ohook Activation**.
 
 ---
 
-### Option B: Instant PowerShell Command (No Git Required)
+### Option B: 1-Click PowerShell Command (No Git Required)
+
 Open **PowerShell (as Administrator)** and paste the following line:
 
 ```powershell
-powershell -Command "irm https://raw.githubusercontent.com/moritzpolster14-oss/Office_M365_Setup/main/start.bat -OutFile start.bat; .\start.bat"
+powershell -Command "iwr https://github.com/moritzpolster14-oss/Office_M365_Setup/archive/refs/heads/main.zip -OutFile setup.zip; Expand-Archive -Path setup.zip -DestinationPath . -Force; cd Office_M365_Setup-main; .\start.bat"
 ```
+
+---
+
+## 🛠️ Menu Overview & Step-by-Step Flow
+
+When running `start.bat`, you will see an interactive menu:
+
+| Option | Action | Description |
+| :--- | :--- | :--- |
+| **`[1]`** | **Install Microsoft 365 Apps** | Recommended. Installs the latest subscription edition of Word, Excel, PowerPoint with all modern features. |
+| **`[2]`** | **Install Office LTSC 2024** | Installs the perpetual Volume License version of Office 2024. Ideal for offline or fixed environments. |
+| **`[3]`** | **Activate Installed Office** | Runs Microsoft Activation Script (MAS) using the permanent **Ohook** method. |
+| **`[4]`** | **Exit** | Closes the setup menu. |
+
+---
+
+## 🔍 Detailed Troubleshooting & Error Debugging (Fehlerbehebung)
+
+### 🔴 1. Error: `Der Befehl "Activation" ist entweder falsch geschrieben...`
+* **Cause**: Older versions of `start.bat` had an unescaped `&` character in the header.
+* **Fix**: Update your repository by running:
+  ```cmd
+  git pull
+  ```
+  Or download the latest ZIP from GitHub.
+
+---
+
+### 🔴 2. Error: `[ERROR] setup.exe could not be downloaded` / `Invoke-WebRequest 404`
+* **Cause**: PowerShell failed to fetch `setup.exe` due to network/firewall restriction or an outdated Microsoft link.
+* **Fix (Automated)**: Run `git pull` to fetch the updated `install_office.bat` which uses Microsoft's updated direct download path.
+* **Fix (Manual Fallback)**:
+  1. Download the Office Deployment Tool manually from Microsoft: [Microsoft ODT Download Page](https://www.microsoft.com/en-us/download/details.aspx?id=49117).
+  2. Run the downloaded file (`officedeploymenttool.exe`) and extract `setup.exe`.
+  3. Place `setup.exe` directly into the `Office_M365_Setup` folder next to `start.bat`.
+  4. Run `start.bat` again.
+
+---
+
+### 🔴 3. Error: `Access Denied` / `Zugriff verweigert`
+* **Cause**: The script was launched without Administrator rights.
+* **Fix**: Right-click `start.bat` and select **Run as Administrator** (*Als Administrator ausführen*).
+
+---
+
+### 🔴 4. Error: Office installation fails or hangs
+* **Cause**: Conflicting older Microsoft Office installations (e.g. Office 2016/2019/365 trial) already present on the system.
+* **Fix**:
+  1. Open Windows **Settings** $\rightarrow$ **Apps & features** / **Installed Apps**.
+  2. Uninstall any existing versions of Microsoft Office or Office 365.
+  3. Reboot your PC and run `start.bat` again.
+
+---
+
+### 🔴 5. Activation Step (`[3]`) Guidance
+* **How does Activation work?** Option `[3]` launches the Microsoft Activation Script (MAS).
+* **Selection in MAS menu**:
+  - In the MAS window, press key **`2`** for **Ohook**.
+  - Then press key **`1`** for **Install Ohook**.
+* This permanently activates Office locally without running background services.
 
 ---
 
@@ -37,11 +107,11 @@ powershell -Command "irm https://raw.githubusercontent.com/moritzpolster14-oss/O
 
 | File | Description |
 | :--- | :--- |
-| **`start.bat`** | **Single 1-Click interactive menu** for installation and activation. |
-| **`install_office.bat`** | Downloads official Microsoft ODT (`setup.exe`) and installs Office. |
-| **`activate_office.bat`** | Executes permanent Ohook activation via Microsoft Activation Scripts (MAS). |
-| **`configuration-Office365-x64.xml`** | Pre-configured XML template for Microsoft 365 Apps (Current Channel, Auto-Detect Language). |
-| **`configuration-LTSC2024-x64.xml`** | Pre-configured XML template for Office LTSC 2024 (Auto-Detect Language). |
+| **`start.bat`** | Unified 1-Click interactive starter script with escaped syntax. |
+| **`install_office.bat`** | Auto-downloads Microsoft ODT (`setup.exe`) and installs Office. |
+| **`activate_office.bat`** | Launches permanent Ohook activation via MAS. |
+| **`configuration-Office365-x64.xml`** | M365 XML configuration (Current Channel, Auto-Detect Language). |
+| **`configuration-LTSC2024-x64.xml`** | Office 2024 XML configuration (Perpetual Volume, Auto-Detect Language). |
 
 ---
 
@@ -49,12 +119,12 @@ powershell -Command "irm https://raw.githubusercontent.com/moritzpolster14-oss/O
 
 <details>
 <summary><b>Which language will be installed?</b></summary>
-The XML configuration uses <code>MatchOS</code>, meaning Microsoft Office automatically installs in the exact language of your Windows operating system (English, German, French, Spanish, etc.).
+The XML configuration uses <code>MatchOS</code>, meaning Microsoft Office automatically installs in the exact language of your Windows operating system (German, English, French, Spanish, etc.).
 </details>
 
 <details>
 <summary><b>Is activation permanent?</b></summary>
-Yes! The activation uses the popular <b>Ohook</b> method via Microsoft Activation Scripts (MAS), providing local, permanent activation without needing any background subscription services.
+Yes! The activation uses the popular <b>Ohook</b> method via Microsoft Activation Scripts (MAS), providing local, permanent activation.
 </details>
 
 ---
@@ -69,5 +139,5 @@ Yes! The activation uses the popular <b>Ohook</b> method via Microsoft Activatio
 ├── configuration-Office365-x64.xml  # XML config for Microsoft 365
 ├── configuration-LTSC2024-x64.xml   # XML config for Office LTSC 2024
 ├── .gitignore                       # Temp files exclusion
-└── README.md                        # Documentation
+└── README.md                        # Detailed documentation & troubleshooting
 ```
