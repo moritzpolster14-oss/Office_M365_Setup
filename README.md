@@ -9,7 +9,7 @@ Automated deployment & permanent activation suite for **Microsoft 365** and **Of
 
 ---
 
-## 📋 Prerequisites / Voraussetzungen
+## 📋 Prerequisites
 
 - **Operating System**: Windows 10 or Windows 11 (64-Bit).
 - **Permissions**: **Administrator privileges** are required to install Office services.
@@ -27,7 +27,7 @@ Automated deployment & permanent activation suite for **Microsoft 365** and **Of
    cd Office_M365_Setup
    ```
 2. **Run the Installer**:
-   - Right-click `start.bat` $\rightarrow$ **Run as Administrator** (*Als Administrator ausführen*).
+   - Right-click `start.bat` $\rightarrow$ **Run as Administrator**.
    - Press `[1]` to install **Microsoft 365 Apps** or `[2]` for **Office LTSC 2024**.
    - After installation, press `[3]` to launch the permanent **Ohook Activation**.
 
@@ -56,10 +56,10 @@ When running `start.bat`, you will see an interactive menu:
 
 ---
 
-## 🔍 Detailed Troubleshooting & Error Debugging (Fehlerbehebung)
+## 🔍 Detailed Troubleshooting & Error Debugging
 
-### 🔴 1. Error: `Der Befehl "Activation" ist entweder falsch geschrieben...`
-* **Cause**: Older versions of `start.bat` had an unescaped `&` character in the header.
+### 🔴 1. Error: `The command "Activation" is either misspelled or could not be found.`
+* **Cause**: Older versions of `start.bat` had an unescaped `&` character in the header banner.
 * **Fix**: Update your repository by running:
   ```cmd
   git pull
@@ -79,9 +79,9 @@ When running `start.bat`, you will see an interactive menu:
 
 ---
 
-### 🔴 3. Error: `Access Denied` / `Zugriff verweigert`
+### 🔴 3. Error: `Access Denied`
 * **Cause**: The script was launched without Administrator rights.
-* **Fix**: Right-click `start.bat` and select **Run as Administrator** (*Als Administrator ausführen*).
+* **Fix**: Right-click `start.bat` and select **Run as Administrator**.
 
 ---
 
@@ -119,7 +119,7 @@ When running `start.bat`, you will see an interactive menu:
 
 <details>
 <summary><b>Which language will be installed?</b></summary>
-The XML configuration uses <code>MatchOS</code>, meaning Microsoft Office automatically installs in the exact language of your Windows operating system (German, English, French, Spanish, etc.).
+The XML configuration uses <code>MatchOS</code>, meaning Microsoft Office automatically installs in the exact language of your Windows operating system (English, German, French, Spanish, etc.).
 </details>
 
 <details>
