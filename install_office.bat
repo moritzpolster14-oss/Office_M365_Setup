@@ -10,7 +10,7 @@ set ODT_EXE=%~dp0setup.exe
 
 if not exist "%ODT_EXE%" (
     echo [INFO] Downloading official Microsoft Office Deployment Tool setup.exe...
-    powershell -NoProfile -Command "Invoke-WebRequest -Uri 'https://config.office.com/api/odt/download' -OutFile '%~dp0setup.exe'"
+    powershell -NoProfile -Command "$url='https://download.microsoft.com/download/6c1eeb25-cf8b-41d9-8d0d-cc1dbc032140/officedeploymenttool_20131-20090.exe'; $odt='%~dp0odt.exe'; Invoke-WebRequest -Uri $url -OutFile $odt; Start-Process -FilePath $odt -ArgumentList '/extract:\"%~dp0.\" /quiet' -Wait; Remove-Item -Force $odt -ErrorAction SilentlyContinue"
 )
 
 if not exist "%ODT_EXE%" (

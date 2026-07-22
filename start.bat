@@ -2,7 +2,7 @@
 chcp 65001 >nul
 title Microsoft Office 365 / 2024 Suite
 echo ==========================================================
-echo   Microsoft Office Deployment & Activation Suite
+echo   Microsoft Office Deployment ^& Activation Suite
 echo ==========================================================
 echo.
 echo Select an option:
