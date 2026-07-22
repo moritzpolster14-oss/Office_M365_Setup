@@ -43,9 +43,56 @@ powershell -Command "iwr https://github.com/moritzpolster14-oss/Office_M365_Setu
 
 ---
 
-## 🛠️ Menu Overview & Step-by-Step Flow
+## 🚶 Step-by-Step Walkthrough
 
-When running `start.bat`, you will see an interactive menu:
+Follow these 5 simple steps to download, install, and activate Microsoft Office on your system:
+
+### 1️⃣ Step 1: Open Command Prompt / PowerShell as Administrator
+Right-click the Start Menu button $\rightarrow$ select **Terminal (Admin)** or **Command Prompt (Admin)**.
+
+### 2️⃣ Step 2: Download / Clone the Repository
+Run the following command to download the suite to your PC:
+```cmd
+git clone https://github.com/moritzpolster14-oss/Office_M365_Setup.git
+cd Office_M365_Setup
+```
+
+### 3️⃣ Step 3: Launch the Master Starter Menu
+Right-click `start.bat` $\rightarrow$ **Run as Administrator** (or run `.\start.bat` in Command Prompt).
+You will be greeted with the main menu:
+
+```text
+==========================================================
+  Microsoft Office Deployment & Activation Suite
+==========================================================
+
+Select an option:
+  [1] Install Microsoft 365 Apps (Recommended)
+  [2] Install Office LTSC 2024 (Perpetual Volume)
+  [3] Activate Installed Office (Ohook / MAS Permanent)
+  [4] Exit
+
+Enter your choice (1-4):
+```
+
+### 4️⃣ Step 4: Install Office
+1. Type **`1`** and press `Enter` to install **Microsoft 365 Apps** (or **`2`** for **Office LTSC 2024**).
+2. The script will automatically fetch the official Microsoft Deployment Tool (`setup.exe`) and start downloading Office directly from Microsoft's servers in your computer's native language.
+3. Wait until Microsoft shows the completion screen: *"You're all set! Office is installed now."*
+
+### 5️⃣ Step 5: Activate Office Permanently
+1. Return to `start.bat` and enter option **`3`** (**Activate Installed Office**).
+2. The official **Microsoft Activation Script (MAS)** prompt will launch.
+3. Inside the MAS window:
+   - Press key **`2`** on your keyboard for **[Ohook] Activation**.
+   - Press key **`1`** on your keyboard to **Install Ohook**.
+4. You will see a green success banner confirming permanent activation!
+
+---
+
+## 🛠️ Menu Overview & Options
+
+When running `start.bat`, you can choose between these actions:
 
 | Option | Action | Description |
 | :--- | :--- | :--- |
