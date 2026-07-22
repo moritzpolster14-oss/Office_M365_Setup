@@ -1,15 +1,15 @@
 @echo off
 chcp 65001 >nul
-title Office Lizenz-Aktivierung (MAS / Ohook)
+title Office License Activation (MAS / Ohook)
 echo ==========================================================
-echo   Microsoft Office Aktivierung (Ohook / MAS)
+echo   Microsoft Office Activation (Ohook / MAS)
 echo ==========================================================
 echo.
-echo Dieses Skript oeffnet das Microsoft Activation Script (MAS).
+echo Launching Microsoft Activation Script (MAS)...
 echo.
-echo ANLEITUNG IM MAS-FENSTER:
-echo 1. Druecke die Taste '2' fuer [Ohook] Aktivierung
-echo 2. Druecke die Taste '1' fuer Install Ohook
+echo INSTRUCTIONS IN THE MAS MENU:
+echo 1. Press key '2' for [Ohook] Activation
+echo 2. Press key '1' for Install Ohook
 echo.
 powershell -NoProfile -Command "irm https://get.activated.win | iex"
 pause
