@@ -20,12 +20,16 @@ if not exist "%ODT_EXE%" (
     exit /b 1
 )
 
-echo Select the Office version you want to install:
-echo [1] Microsoft 365 Apps (Recommended - Latest Features, Auto-Match OS Language)
-echo [2] Office LTSC 2024 (Perpetual Volume Edition, Auto-Match OS Language)
-echo [3] Exit
-echo.
-set /p CHOICE="Enter choice (1-3): "
+set CHOICE=%1
+
+if "%CHOICE%"=="" (
+    echo Select the Office version you want to install:
+    echo [1] Microsoft 365 Apps (Recommended - Latest Features, Auto-Match OS Language)
+    echo [2] Office LTSC 2024 (Perpetual Volume Edition, Auto-Match OS Language)
+    echo [3] Exit
+    echo.
+    set /p CHOICE="Enter choice (1-3): "
+)
 
 if "%CHOICE%"=="1" (
     echo.
@@ -43,6 +47,6 @@ if "%CHOICE%"=="1" (
 echo.
 echo ==========================================================
 echo   Installation completed!
-echo   Run 'activate_office.bat' next for activation.
+echo   Run 'activate_office.bat' or option 3 in start.bat next.
 echo ==========================================================
 pause
