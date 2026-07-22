@@ -1,0 +1,9 @@
+# Office Deployment Tool Temp Files & Binaries
+v64.cab
+office/
+setup.exe
+
+# OS & Temp
+.DS_Store
+Thumbs.db
+*.tmp
