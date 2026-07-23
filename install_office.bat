@@ -37,13 +37,13 @@ set /p MODE="Enter choice (1-3): "
 :START_INSTALL
 if "%MODE%"=="1" (
     echo Starting installation of Microsoft 365...
-    echo Please wait while Microsoft Office is being installed...
+    echo Please wait while Microsoft Office is being downloaded and installed...
     echo [%DATE% %TIME%] Selected Option 1: Microsoft 365 Apps. Executing setup.exe /configure configuration-Office365-x64.xml >> "%LOG_FILE%"
     "%ODT_EXE%" /configure "%~dp0configuration-Office365-x64.xml"
     set EXIT_CODE=%ERRORLEVEL%
 ) else if "%MODE%"=="2" (
     echo Starting installation of Office LTSC 2024...
-    echo Please wait while Microsoft Office is being installed...
+    echo Please wait while Microsoft Office is being downloaded and installed...
     echo [%DATE% %TIME%] Selected Option 2: Office LTSC 2024. Executing setup.exe /configure configuration-LTSC2024-x64.xml >> "%LOG_FILE%"
     "%ODT_EXE%" /configure "%~dp0configuration-LTSC2024-x64.xml"
     set EXIT_CODE=%ERRORLEVEL%
@@ -58,14 +58,15 @@ echo [%DATE% %TIME%] setup.exe finished with exit code %EXIT_CODE% >> "%LOG_FILE
 if %EXIT_CODE% equ 0 (
     echo.
     echo ==========================================================
-    echo   Installation completed successfully!
-    echo   Log saved to: %LOG_FILE%
+    echo   Installation process initiated successfully!
+    echo   Activity log saved to: %LOG_FILE%
+    echo.
+    echo   NEXT STEP:
+    echo   Once Microsoft completes the download window,
+    echo   run start.bat again and select Option [3] to Activate.
     echo ==========================================================
     echo.
-    echo Automatically launching Option [3]: Office Activation (MAS / Ohook)...
-    echo.
-    timeout /t 3 >nul
-    call "%~dp0activate_office.bat"
+    pause
 ) else (
     echo.
     echo ==========================================================

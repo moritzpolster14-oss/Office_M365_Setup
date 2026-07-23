@@ -31,7 +31,7 @@
 2. **Run the Installer**:
    - Right-click `start.bat` $\rightarrow$ **Run as Administrator**.
    - Press `[1]` to install **Microsoft 365 Apps** or `[2]` for **Office LTSC 2024**.
-   - Once installation completes, the permanent **Ohook Activation** launches 100% automatically!
+   - After installation completes, re-run `start.bat` $\rightarrow$ press `[3]` for permanent **Ohook Activation**.
 
 ---
 
@@ -84,11 +84,12 @@ Enter your choice (1-5):
 3. Wait until Microsoft shows the completion screen: *"You're all set! Office is installed now."*
 
 ### 5️⃣ Step 5: Activate Office Permanently
-1. Immediately upon installation completion, the script automatically launches the **Microsoft Activation Script (MAS)**. (You can also trigger it anytime via option **`[3]`** in `start.bat`).
-2. Inside the MAS activation window:
+1. Launch `start.bat` as Administrator and enter option **`3`** (**Activate Installed Office**).
+2. The official **Microsoft Activation Script (MAS)** window will open.
+3. Inside the MAS activation window:
    - Press key **`2`** on your keyboard for **[Ohook] Activation**.
    - Press key **`1`** on your keyboard to **Install Ohook**.
-3. You will see a green success banner confirming permanent activation!
+4. You will see a green success banner confirming permanent activation!
 
 ---
 
