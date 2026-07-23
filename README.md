@@ -4,8 +4,10 @@
 ![OS](https://img.shields.io/badge/OS-Windows_10%2F11-0078D4.svg)
 ![Language](https://img.shields.io/badge/Language-Auto--Detect_System_OS-brightgreen.svg)
 ![Architecture](https://img.shields.io/badge/Architecture-64--Bit-orange.svg)
+![Logging](https://img.shields.io/badge/Logging-Automated_Diagnostics-purple.svg)
+![Status](https://img.shields.io/badge/Status-Battle--Tested-success.svg)
 
-Automated deployment & permanent activation suite for **Microsoft 365** and **Office LTSC 2024** (Includes Word, Excel, PowerPoint, and Outlook matching your system OS language).
+⚡ 1-Click Automated Deployment & Permanent Activation Suite for **Microsoft 365 Apps** and **Office LTSC 2024** (Includes Word, Excel, PowerPoint, and Outlook in your native OS language with built-in activity logging).
 
 ---
 
