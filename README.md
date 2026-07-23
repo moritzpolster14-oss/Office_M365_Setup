@@ -29,7 +29,7 @@
    cd Office_M365_Setup
    ```
 2. **Run the Installer**:
-   - Right-click `start.bat` $\rightarrow$ **Run as Administrator**.
+   - Double-click `start.bat` (or Right-click $\rightarrow$ **Run as Administrator**). The script automatically requests Admin rights if needed.
    - Press `[1]` to install **Microsoft 365 Apps** or `[2]` for **Office LTSC 2024**.
    - After installation completes, re-run `start.bat` $\rightarrow$ press `[3]` for permanent **Ohook Activation**.
 

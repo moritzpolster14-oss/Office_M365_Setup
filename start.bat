@@ -2,6 +2,13 @@
 chcp 65001 >nul
 title Microsoft Office 365 / 2024 Suite
 
+net session >nul 2>&1
+if %errorLevel% neq 0 (
+    echo Requesting Administrator privileges...
+    powershell -ExecutionPolicy Bypass -Command "Start-Process '%~f0' -Verb RunAs"
+    exit /b
+)
+
 :MENU_LOOP
 cls
 echo ==========================================================
