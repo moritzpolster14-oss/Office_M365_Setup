@@ -41,14 +41,12 @@ if "%MODE%"=="1" (
     echo [%DATE% %TIME%] Selected Option 1: Microsoft 365 Apps. Executing setup.exe /configure configuration-Office365-x64.xml >> "%LOG_FILE%"
     "%ODT_EXE%" /configure "%~dp0configuration-Office365-x64.xml"
     set EXIT_CODE=%ERRORLEVEL%
-    powershell -NoProfile -ExecutionPolicy Bypass -Command "Start-Sleep -Seconds 3; while (Get-Process -Name 'OfficeClickToRun' -ErrorAction SilentlyContinue | Where-Object { $_.MainWindowHandle -ne 0 }) { Start-Sleep -Seconds 2 }"
 ) else if "%MODE%"=="2" (
     echo Starting installation of Office LTSC 2024...
     echo Please wait while Microsoft Office is being installed...
     echo [%DATE% %TIME%] Selected Option 2: Office LTSC 2024. Executing setup.exe /configure configuration-LTSC2024-x64.xml >> "%LOG_FILE%"
     "%ODT_EXE%" /configure "%~dp0configuration-LTSC2024-x64.xml"
     set EXIT_CODE=%ERRORLEVEL%
-    powershell -NoProfile -ExecutionPolicy Bypass -Command "Start-Sleep -Seconds 3; while (Get-Process -Name 'OfficeClickToRun' -ErrorAction SilentlyContinue | Where-Object { $_.MainWindowHandle -ne 0 }) { Start-Sleep -Seconds 2 }"
 ) else (
     echo Installation cancelled.
     echo [%DATE% %TIME%] Installation cancelled by user. >> "%LOG_FILE%"
@@ -66,6 +64,7 @@ if %EXIT_CODE% equ 0 (
     echo.
     echo Automatically launching Option [3]: Office Activation (MAS / Ohook)...
     echo.
+    timeout /t 3 >nul
     call "%~dp0activate_office.bat"
 ) else (
     echo.
