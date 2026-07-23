@@ -47,20 +47,17 @@ powershell -Command "iwr https://github.com/moritzpolster14-oss/Office_M365_Setu
 
 ## 🚶 Step-by-Step Walkthrough
 
-Follow these 5 simple steps to download, install, and activate Microsoft Office on your system:
+Follow these simple steps to download, install, and activate Microsoft Office on your system:
 
-### 1️⃣ Step 1: Open Command Prompt / PowerShell as Administrator
-Right-click the Start Menu button $\rightarrow$ select **Terminal (Admin)** or **Command Prompt (Admin)**.
-
-### 2️⃣ Step 2: Download / Clone the Repository
-Run the following command to download the suite to your PC:
+### 1️⃣ Step 1: Download / Clone the Repository
+Open Command Prompt / PowerShell and run the following command to download the suite to your PC:
 ```cmd
 git clone https://github.com/moritzpolster14-oss/Office_M365_Setup.git
 cd Office_M365_Setup
 ```
 
-### 3️⃣ Step 3: Launch the Master Starter Menu
-Right-click `start.bat` $\rightarrow$ **Run as Administrator** (or run `.\start.bat` in Command Prompt).
+### 2️⃣ Step 2: Launch the Master Starter Menu
+Double-click `start.bat`. (The script automatically requests Administrator privileges via Windows UAC if needed).
 You will be greeted with the main menu:
 
 ```text
@@ -78,13 +75,13 @@ Select an option:
 Enter your choice (1-5):
 ```
 
-### 4️⃣ Step 4: Install Office
+### 3️⃣ Step 3: Install Office
 1. Type **`1`** and press `Enter` to install **Microsoft 365 Apps** (or **`2`** for **Office LTSC 2024**).
 2. The script will use the official Microsoft Deployment Tool (`setup.exe`) to install Office directly from Microsoft's servers in your computer's native language.
 3. Wait until Microsoft shows the completion screen: *"You're all set! Office is installed now."*
 
-### 5️⃣ Step 5: Activate Office Permanently
-1. Launch `start.bat` as Administrator and enter option **`3`** (**Activate Installed Office**).
+### 4️⃣ Step 4: Activate Office Permanently
+1. Double-click `start.bat` again and enter option **`3`** (**Activate Installed Office**).
 2. The official **Microsoft Activation Script (MAS)** window will open.
 3. Inside the MAS activation window:
    - Press key **`2`** on your keyboard for **[Ohook] Activation**.
