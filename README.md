@@ -167,11 +167,12 @@ The deployment suite automatically generates detailed log files to track progres
 
 | File | Description |
 | :--- | :--- |
-| **`start.bat`** | Unified 1-Click interactive starter script with escaped syntax. |
-| **`install_office.bat`** | Auto-downloads Microsoft ODT (`setup.exe`) and installs Office. |
+| **`start.bat`** | Unified 1-Click interactive starter script with UAC auto-elevation & persistent menu. |
+| **`install_office.bat`** | Executes official Microsoft ODT (`setup.exe`) and installs Office. |
 | **`activate_office.bat`** | Launches permanent Ohook activation via MAS. |
-| **`configuration-Office365-x64.xml`** | M365 XML configuration (Current Channel, Auto-Detect Language). |
-| **`configuration-LTSC2024-x64.xml`** | Office 2024 XML configuration (Perpetual Volume, Auto-Detect Language). |
+| **`setup.exe`** | Official 64-bit Microsoft Office Deployment Tool binary (v16.0.18324.20000). |
+| **`configuration-Office365-x64.xml`** | M365 XML configuration (Current Channel, Auto-Detect Language, Excludes OneDrive). |
+| **`configuration-LTSC2024-x64.xml`** | Office 2024 XML configuration (Perpetual Volume, Auto-Detect Language, Excludes OneDrive). |
 
 ---
 
@@ -196,8 +197,9 @@ Yes! The activation uses the popular <b>Ohook</b> method via Microsoft Activatio
 ├── start.bat                        # Unified 1-click menu starter
 ├── install_office.bat               # Office deployment script
 ├── activate_office.bat              # Ohook activation script
+├── setup.exe                        # Official 64-bit Microsoft ODT tool
 ├── configuration-Office365-x64.xml  # XML config for Microsoft 365
 ├── configuration-LTSC2024-x64.xml   # XML config for Office LTSC 2024
-├── .gitignore                       # Temp files exclusion
+├── .gitignore                       # Temp & log files exclusion
 └── README.md                        # Detailed documentation & troubleshooting
 ```
