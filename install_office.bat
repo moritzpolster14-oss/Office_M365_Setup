@@ -60,16 +60,9 @@ if %EXIT_CODE% equ 0 (
     echo   Log saved to: %LOG_FILE%
     echo ==========================================================
     echo.
-    set ACT_NOW=
-    set /p ACT_NOW="Would you like to activate Office now? (Y/N) [Default: Y]: "
-    if "%ACT_NOW%"=="" set ACT_NOW=Y
-    if /i "%ACT_NOW%"=="Y" (
-        echo.
-        call "%~dp0activate_office.bat"
-    ) else if /i "%ACT_NOW%"=="J" (
-        echo.
-        call "%~dp0activate_office.bat"
-    )
+    echo Launching permanent Office activation (Ohook / MAS)...
+    echo.
+    call "%~dp0activate_office.bat"
 ) else (
     echo.
     echo ==========================================================
