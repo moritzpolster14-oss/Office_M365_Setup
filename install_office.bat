@@ -19,7 +19,7 @@ set ODT_EXE=%~dp0setup.exe
 if not exist "%ODT_EXE%" (
     echo [INFO] Downloading official Microsoft Office Deployment Tool setup.exe...
     echo [%DATE% %TIME%] Downloading ODT setup.exe from Microsoft CDN... >> "%LOG_FILE%"
-    powershell -NoProfile -ExecutionPolicy Bypass -Command "$ProgressPreference='SilentlyContinue'; $publicDir='C:\Users\Public\odt_temp'; New-Item -ItemType Directory -Path $publicDir -Force | Out-Null; $odt=Join-Path $publicDir 'odt.exe'; Invoke-WebRequest -Uri 'https://download.microsoft.com/download/6c1eeb25-cf8b-41d9-8d0d-cc1dbc032140/officedeploymenttool_20131-20090.exe' -OutFile $odt; Start-Process -FilePath $odt -ArgumentList '/extract:C:\Users\Public\odt_temp /quiet' -Wait; Copy-Item (Join-Path $publicDir 'setup.exe') '%~dp0setup.exe' -Force; Remove-Item $publicDir -Recurse -Force -ErrorAction SilentlyContinue"
+    powershell -NoProfile -ExecutionPolicy Bypass -Command "$ProgressPreference='SilentlyContinue'; $public='C:\Users\Public\odt_temp'; New-Item -ItemType Directory -Path $public -Force | Out-Null; $odt=Join-Path $public 'odt.exe'; Invoke-WebRequest -Uri 'https://download.microsoft.com/download/6c1eeb25-cf8b-41d9-8d0d-cc1dbc032140/officedeploymenttool_20131-20090.exe' -OutFile $odt; cmd /c \"$odt /extract:C:\Users\Public\odt_temp /quiet\"; Copy-Item 'C:\Users\Public\odt_temp\setup.exe' '%~dp0setup.exe' -Force; Remove-Item $public -Recurse -Force -ErrorAction SilentlyContinue"
 )
 
 if not exist "%ODT_EXE%" (
