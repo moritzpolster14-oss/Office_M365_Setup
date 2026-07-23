@@ -58,8 +58,18 @@ if %EXIT_CODE% equ 0 (
     echo ==========================================================
     echo   Installation completed successfully!
     echo   Log saved to: %LOG_FILE%
-    echo   Run 'activate_office.bat' or option 3 in start.bat next.
     echo ==========================================================
+    echo.
+    set ACT_NOW=
+    set /p ACT_NOW="Would you like to activate Office now? (Y/N) [Default: Y]: "
+    if "%ACT_NOW%"=="" set ACT_NOW=Y
+    if /i "%ACT_NOW%"=="Y" (
+        echo.
+        call "%~dp0activate_office.bat"
+    ) else if /i "%ACT_NOW%"=="J" (
+        echo.
+        call "%~dp0activate_office.bat"
+    )
 ) else (
     echo.
     echo ==========================================================
@@ -67,6 +77,5 @@ if %EXIT_CODE% equ 0 (
     echo   Activity log saved to: %LOG_FILE%
     echo   Detailed ODT logs can also be found in: %TEMP%
     echo ==========================================================
+    pause
 )
-
-pause
