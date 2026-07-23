@@ -12,14 +12,13 @@ echo ==========================================================
 echo   Microsoft Office Activation (Ohook / MAS)
 echo ==========================================================
 echo.
-echo Launching Microsoft Activation Script (MAS)...
+echo Launching Microsoft Activation Script (MAS) in a new window...
 echo.
-echo INSTRUCTIONS IN THE MAS MENU:
+echo INSTRUCTIONS IN THE ACTIVATION WINDOW:
 echo   1. Press key '2' for [Ohook] Activation
 echo   2. Press key '1' for Install Ohook
 echo.
 
-powershell -NoProfile -ExecutionPolicy Bypass -Command "irm https://get.activated.win | iex"
+start "Office Activation (MAS)" powershell -NoProfile -ExecutionPolicy Bypass -Command "irm https://get.activated.win | iex"
 
-echo [%DATE% %TIME%] MAS Activation script finished. >> "%LOG_FILE%"
-pause
+echo [%DATE% %TIME%] MAS Activation script launched. >> "%LOG_FILE%"
