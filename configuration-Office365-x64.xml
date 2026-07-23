@@ -16,6 +16,8 @@
     </Product>
   </Add>
 
+  <Logging Level="Standard" />
+
   <!--  <Updates Enabled="TRUE" Channel="Current" /> -->
 
   <!--  <Display Level="None" AcceptEULA="TRUE" />  -->

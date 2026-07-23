@@ -9,9 +9,10 @@ echo Select an option:
 echo   [1] Install Microsoft 365 Apps (Recommended)
 echo   [2] Install Office LTSC 2024 (Perpetual Volume)
 echo   [3] Activate Installed Office (Ohook / MAS Permanent)
-echo   [4] Exit
+echo   [4] Open Logs Folder
+echo   [5] Exit
 echo.
-set /p CHOICE="Enter your choice (1-4): "
+set /p CHOICE="Enter your choice (1-5): "
 
 if "%CHOICE%"=="1" (
     call "%~dp0install_office.bat" 1
@@ -19,6 +20,9 @@ if "%CHOICE%"=="1" (
     call "%~dp0install_office.bat" 2
 ) else if "%CHOICE%"=="3" (
     call "%~dp0activate_office.bat"
+) else if "%CHOICE%"=="4" (
+    if not exist "%~dp0logs" mkdir "%~dp0logs"
+    explorer "%~dp0logs"
 ) else (
     echo Goodbye!
     exit /b 0

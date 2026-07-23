@@ -10,4 +10,5 @@
       <ExcludeApp ID="Publisher" />
     </Product>
   </Add>
+  <Logging Level="Standard" />
 </Configuration>

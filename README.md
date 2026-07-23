@@ -99,7 +99,17 @@ When running `start.bat`, you can choose between these actions:
 | **`[1]`** | **Install Microsoft 365 Apps** | Recommended. Installs the latest subscription edition of Word, Excel, PowerPoint with all modern features. |
 | **`[2]`** | **Install Office LTSC 2024** | Installs the perpetual Volume License version of Office 2024. Ideal for offline or fixed environments. |
 | **`[3]`** | **Activate Installed Office** | Runs Microsoft Activation Script (MAS) using the permanent **Ohook** method. |
-| **`[4]`** | **Exit** | Closes the setup menu. |
+| **`[4]`** | **Open Logs Folder** | Opens the `logs\` folder containing detailed setup activity and ODT diagnostic logs. |
+| **`[5]`** | **Exit** | Closes the setup menu. |
+
+---
+
+## 📄 Automated Logging & Diagnostics
+
+The deployment suite automatically generates detailed log files to track progress and diagnose any installation errors:
+- **Activity Log**: Saved to `logs\setup_activity.log` with timestamps for script execution, ODT downloads, and exit codes.
+- **ODT Diagnostic Log**: Configured via `<Logging Level="Standard" />` in XML templates. If `setup.exe` encounters an error, detailed diagnostic logs are saved to `%TEMP%` and `logs\`.
+- **Quick Access**: Select option `[4]` in `start.bat` to instantly open the `logs\` directory.
 
 ---
 
