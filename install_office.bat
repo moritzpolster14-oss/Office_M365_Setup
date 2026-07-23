@@ -2,7 +2,6 @@
 chcp 65001 >nul
 title Microsoft 365 / Office 2024 Installer
 
-set CHOICE=%~1
 set LOG_DIR=%~dp0logs
 if not exist "%LOG_DIR%" mkdir "%LOG_DIR%"
 set LOG_FILE=%LOG_DIR%\setup_activity.log
@@ -17,39 +16,34 @@ echo.
 set ODT_EXE=%~dp0setup.exe
 
 if not exist "%ODT_EXE%" (
-    echo [INFO] Downloading official Microsoft Office Deployment Tool setup.exe...
-    echo [%DATE% %TIME%] Downloading ODT setup.exe from Microsoft CDN... >> "%LOG_FILE%"
-    powershell -NoProfile -ExecutionPolicy Bypass -Command "$ProgressPreference='SilentlyContinue'; $public='C:\Users\Public\odt_temp'; New-Item -ItemType Directory -Path $public -Force | Out-Null; $odt=Join-Path $public 'odt.exe'; Invoke-WebRequest -Uri 'https://download.microsoft.com/download/6c1eeb25-cf8b-41d9-8d0d-cc1dbc032140/officedeploymenttool_20131-20090.exe' -OutFile $odt; cmd /c \"$odt /extract:C:\Users\Public\odt_temp /quiet\"; Copy-Item 'C:\Users\Public\odt_temp\setup.exe' '%~dp0setup.exe' -Force; Remove-Item $public -Recurse -Force -ErrorAction SilentlyContinue"
-)
-
-if not exist "%ODT_EXE%" (
-    echo [ERROR] setup.exe could not be downloaded.
-    echo Please manually download setup.exe from Microsoft and place it in this folder.
-    echo [%DATE% %TIME%] ERROR: setup.exe download failed. >> "%LOG_FILE%"
+    echo [ERROR] setup.exe is missing from the folder.
+    echo Please ensure setup.exe is present in this directory.
+    echo [%DATE% %TIME%] ERROR: setup.exe missing. >> "%LOG_FILE%"
     pause
     exit /b 1
 )
 
-if "%CHOICE%"=="" (
-    echo Select the Office version you want to install:
-    echo [1] Microsoft 365 Apps (Recommended - Latest Features, Auto-Match OS Language)
-    echo [2] Office LTSC 2024 (Perpetual Volume Edition, Auto-Match OS Language)
-    echo [3] Exit
-    echo.
-    set /p CHOICE="Enter choice (1-3): "
-)
+set MODE=%~1
 
-if "%CHOICE%"=="1" (
-    echo.
+if not "%MODE%"=="" goto START_INSTALL
+
+echo Select the Office version you want to install:
+echo [1] Microsoft 365 Apps (Recommended - Latest Features, Auto-Match OS Language)
+echo [2] Office LTSC 2024 (Perpetual Volume Edition, Auto-Match OS Language)
+echo [3] Exit
+echo.
+set /p MODE="Enter choice (1-3): "
+
+:START_INSTALL
+if "%MODE%"=="1" (
     echo Starting installation of Microsoft 365...
     echo [%DATE% %TIME%] Selected Option 1: Microsoft 365 Apps. Executing setup.exe /configure configuration-Office365-x64.xml >> "%LOG_FILE%"
-    "%~dp0setup.exe" /configure "%~dp0configuration-Office365-x64.xml"
+    "%ODT_EXE%" /configure "%~dp0configuration-Office365-x64.xml"
     set EXIT_CODE=%ERRORLEVEL%
-) else if "%CHOICE%"=="2" (
-    echo.
+) else if "%MODE%"=="2" (
     echo Starting installation of Office LTSC 2024...
     echo [%DATE% %TIME%] Selected Option 2: Office LTSC 2024. Executing setup.exe /configure configuration-LTSC2024-x64.xml >> "%LOG_FILE%"
-    "%~dp0setup.exe" /configure "%~dp0configuration-LTSC2024-x64.xml"
+    "%ODT_EXE%" /configure "%~dp0configuration-LTSC2024-x64.xml"
     set EXIT_CODE=%ERRORLEVEL%
 ) else (
     echo Installation cancelled.
