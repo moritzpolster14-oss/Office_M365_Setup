@@ -1,6 +1,9 @@
 @echo off
 chcp 65001 >nul
 title Microsoft 365 / Office 2024 Installer
+
+set CHOICE=%~1
+
 echo ==========================================================
 echo   Microsoft Office Setup (Excel, Word, PowerPoint)
 echo ==========================================================
@@ -10,7 +13,7 @@ set ODT_EXE=%~dp0setup.exe
 
 if not exist "%ODT_EXE%" (
     echo [INFO] Downloading official Microsoft Office Deployment Tool setup.exe...
-    powershell -NoProfile -Command "$ProgressPreference='SilentlyContinue'; $url='https://download.microsoft.com/download/6c1eeb25-cf8b-41d9-8d0d-cc1dbc032140/officedeploymenttool_20131-20090.exe'; $odt='%~dp0odt.exe'; Invoke-WebRequest -Uri $url -OutFile $odt; Start-Process -FilePath $odt -ArgumentList '/extract:\"%~dp0.\" /quiet' -Wait; Remove-Item -Force $odt -ErrorAction SilentlyContinue"
+    powershell -NoProfile -ExecutionPolicy Bypass -Command "$ProgressPreference='SilentlyContinue'; $dir='%~dp0'; $odt=Join-Path $dir 'odt.exe'; Invoke-WebRequest -Uri 'https://download.microsoft.com/download/6c1eeb25-cf8b-41d9-8d0d-cc1dbc032140/officedeploymenttool_20131-20090.exe' -OutFile $odt; Start-Process -FilePath $odt -ArgumentList \"/extract:`\"$dir`\" /quiet\" -Wait; Remove-Item -Force $odt -ErrorAction SilentlyContinue"
 )
 
 if not exist "%ODT_EXE%" (
@@ -19,8 +22,6 @@ if not exist "%ODT_EXE%" (
     pause
     exit /b 1
 )
-
-set CHOICE=%~1
 
 if "%CHOICE%"=="" (
     echo Select the Office version you want to install:
